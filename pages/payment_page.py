@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class Payment_page(Base):
 
     check = "Checkout: Complete!"
+    check_link = "https://www.saucedemo.com/checkout-step-two.html"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -36,5 +37,6 @@ class Payment_page(Base):
 
     def confirm_payment(self):
         self.get_current_url()
+        self.check_url(self.check_link)
         self.click_finish_button()
         self.check_word(self.get_check_word(self.check_word_locator), self.check)

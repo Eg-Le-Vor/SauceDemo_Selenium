@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class User_information_page(Base):
 
     check = "Checkout: Overview"
+    check_link = "https://www.saucedemo.com/checkout-step-one.html"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -60,6 +61,7 @@ class User_information_page(Base):
 
     def enter_data(self, first_name, last_name, zip_code):
         self.get_current_url()
+        self.check_url(self.check_link)
         self.input_first_name(first_name)
         self.input_last_name(last_name)
         self.input_zip_code(zip_code)
