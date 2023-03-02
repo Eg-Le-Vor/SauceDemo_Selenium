@@ -6,6 +6,7 @@ from pages.login_page import Login_page
 from pages.main_page import Main_page
 from pages.cart_page import Cart_page
 from pages.user_information_page import User_information_page
+from pages.payment_page import Payment_page
 
 
 BASE_URL = "https://www.saucedemo.com/"
@@ -45,5 +46,8 @@ def test_select_product():
 
     user_information_page = User_information_page(driver)
     user_information_page.enter_data(first_name, last_name, zip_code)
+
+    payment_page = Payment_page(driver)
+    payment_page.confirm_payment()
 
     print('Конец теста.')
