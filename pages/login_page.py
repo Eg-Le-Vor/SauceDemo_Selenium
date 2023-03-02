@@ -23,6 +23,7 @@ class Login_page(Base):
     user_name_locator = "//input[@id='user-name']"
     password_locator = "//input[@id='password']"
     login_button_locator = "//input[@id='login-button']"
+    check_word_locator = "//span[@class='title']"
 
 
     """Геттеры"""
@@ -35,6 +36,9 @@ class Login_page(Base):
     
     def get_login_button(self):
         return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.login_button_locator)))
+    
+    def get_check_word(self):
+        return WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.check_word_locator)))
 
 
     """Действия"""
@@ -61,3 +65,4 @@ class Login_page(Base):
         self.input_user_name(self.users["standard_user"])
         self.input_password(self.password)
         self.click_login_button()
+        self.check_text(self.get_check_word(), 'Products')
