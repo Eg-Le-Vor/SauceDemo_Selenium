@@ -2,16 +2,20 @@ import time
 import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.login_page import Login_page
+from pages.main_page import Main_page
 
 
 BASE_URL = "https://www.saucedemo.com/"
 CHROMEDRIVE_PATH = "utils/chromedriver.exe"
 PASSWORD = "secret_sauce"
 LOGIN_STANDARD_USER = "standard_user"
+
+users = {"standard_user": "standard_user",
+         "locked_out_user": "locked_out_user",
+         "problem_user": "problem_user",
+         "performance_glitch_user": "performance_glitch_user"}
+password = "secret_sauce"
 
 
 def test_select_product():
@@ -26,12 +30,11 @@ def test_select_product():
     print('\nНачало теста.\n')
 
     login = Login_page(driver)
-    login.authorization()
+    login.authorization(users["standard_user"], password)
 
-    cart = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//div[@id="shopping_cart_container"]')))
-    cart.click()
-    success_test = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, '//span[@class="title"]')))
-    assert success_test.text == 'Your Cart'
-    print('Совершён переход в корзину.')
+    print()
+
+    main_page = Main_page(driver)
+    main_page.select_product()
 
     print('\nКонец теста.')
