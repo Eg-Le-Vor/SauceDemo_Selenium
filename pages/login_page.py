@@ -46,7 +46,7 @@ class Login_page(Base):
     
     def click_login_button(self):
         self.get_login_button().click()
-        print('Нажата кнопка входа.')
+        print('Нажата кнопка LOGIN.')
 
 
     """Методы"""
