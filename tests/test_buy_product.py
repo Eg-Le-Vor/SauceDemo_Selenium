@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from pages.login_page import Login_page
 from pages.main_page import Main_page
+from pages.cart_page import Cart_page
 
 
 BASE_URL = "https://www.saucedemo.com/"
@@ -27,14 +28,15 @@ def test_select_product():
     g = Service(CHROMEDRIVE_PATH)
     driver = webdriver.Chrome(options=options, service=g)
 
-    print('\nНачало теста.\n')
+    print('\n\nНачало теста.\n')
 
     login = Login_page(driver)
     login.authorization(users["standard_user"], password)
 
-    print()
-
     main_page = Main_page(driver)
     main_page.select_product()
 
-    print('\nКонец теста.')
+    cart_page = Cart_page(driver)
+    cart_page.checkout()
+
+    print('Конец теста.')

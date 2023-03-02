@@ -26,4 +26,4 @@ class Base():
 
     def check_word(self, word, result):
         assert word.text == result
-        print('Проверка страницы успешна.')
+        print('Переход на новую страницу успешен.\n')
