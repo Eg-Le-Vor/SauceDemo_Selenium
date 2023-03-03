@@ -6,9 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Cart_page(Base):
 
-    check = "Checkout: Your Information"
-    check_link = "https://www.saucedemo.com/cart.html"
-
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -17,7 +14,6 @@ class Cart_page(Base):
     """Локаторы"""
 
     checkout_button_locator = "//button[@id='checkout']"
-    check_word_locator = "//span[@class='title']"
 
 
     """Геттеры"""
@@ -36,7 +32,11 @@ class Cart_page(Base):
     """Методы"""
 
     def checkout(self):
+        self.check_w = "Checkout: Your Information"
+        self.check_u = "https://www.saucedemo.com/cart.html"
+        self.check_word_locator = "//span[@class='title']"
+
         self.get_current_url()
-        self.check_url(self.check_link)
+        self.check_url(self.check_u)
         self.click_checkout_button()
-        self.check_word(self.get_check_word(self.check_word_locator), self.check)
+        self.check_word(self.get_check_word(self.check_word_locator), self.check_w)

@@ -6,9 +6,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class User_information_page(Base):
 
-    check = "Checkout: Overview"
-    check_link = "https://www.saucedemo.com/checkout-step-one.html"
-
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -20,7 +17,6 @@ class User_information_page(Base):
     last_name_locator = "//input[@id='last-name']"
     zip_code_locator = "//input[@id='postal-code']"
     continue_button_locator = "//input[@id='continue']"
-    check_word_locator = "//span[@class='title']"
 
 
     """Геттеры"""
@@ -60,10 +56,14 @@ class User_information_page(Base):
     """Методы"""
 
     def enter_data(self, first_name, last_name, zip_code):
+        self.check_w = "Checkout: Overview"
+        self.check_u = "https://www.saucedemo.com/checkout-step-one.html"
+        self.check_word_locator = "//span[@class='title']"
+
         self.get_current_url()
-        self.check_url(self.check_link)
+        self.check_url(self.check_u)
         self.input_first_name(first_name)
         self.input_last_name(last_name)
         self.input_zip_code(zip_code)
         self.click_continue_button()
-        self.check_word(self.get_check_word(self.check_word_locator), self.check)
+        self.check_word(self.get_check_word(self.check_word_locator), self.check_w)

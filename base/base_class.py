@@ -8,6 +8,9 @@ class Base():
 
     def __init__(self, driver):
         self.driver = driver
+        self.check_w = ""
+        self.check_u = ""
+        self.check_word_locator = ""
 
 
     """Метод получения текущего URL"""

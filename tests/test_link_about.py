@@ -22,7 +22,7 @@ last_name = "Chaika"
 zip_code = "124365"
 
 
-def test_select_product():
+def test_link_about():
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
@@ -37,18 +37,6 @@ def test_select_product():
     login.authorization(users["standard_user"], password)
 
     main_page = Main_page(driver)
-    main_page.select_product()
-
-    cart_page = Cart_page(driver)
-    cart_page.checkout()
-
-    user_information_page = User_information_page(driver)
-    user_information_page.enter_data(first_name, last_name, zip_code)
-
-    payment_page = Payment_page(driver)
-    payment_page.confirm_payment()
-
-    finish_page = Finish_page(driver)
-    finish_page.finish()
+    main_page.select_menu_about()
 
     print('\nКонец теста.\n')

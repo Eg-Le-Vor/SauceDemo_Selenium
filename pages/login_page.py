@@ -7,7 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 class Login_page(Base):
 
     url = "https://www.saucedemo.com/"
-    check = "Products"
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -19,7 +18,6 @@ class Login_page(Base):
     user_name_locator = "//input[@id='user-name']"
     password_locator = "//input[@id='password']"
     login_button_locator = "//input[@id='login-button']"
-    check_word_locator = "//span[@class='title']"
 
 
     """Геттеры"""
@@ -52,6 +50,9 @@ class Login_page(Base):
     """Методы"""
 
     def authorization(self, user_name, password):
+        self.check_w = "Products"
+        self.check_word_locator = "//span[@class='title']"
+        
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
@@ -59,4 +60,4 @@ class Login_page(Base):
         self.input_user_name(user_name)
         self.input_password(password)
         self.click_login_button()
-        self.check_word(self.get_check_word(self.check_word_locator), self.check)
+        self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
