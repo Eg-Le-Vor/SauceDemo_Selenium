@@ -1,5 +1,4 @@
-import time
-import datetime
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from pages.login_page import Login_page
@@ -22,7 +21,8 @@ last_name = "Chaika"
 zip_code = "124365"
 
 
-def test_select_product():
+@pytest.mark.run(order=3)
+def test_select_product_1():
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
@@ -37,18 +37,66 @@ def test_select_product():
     login.authorization(users["standard_user"], password)
 
     main_page = Main_page(driver)
-    main_page.select_product()
+    main_page.select_product_1()
 
     cart_page = Cart_page(driver)
     cart_page.checkout()
 
-    user_information_page = User_information_page(driver)
-    user_information_page.enter_data(first_name, last_name, zip_code)
+    # user_information_page = User_information_page(driver)
+    # user_information_page.enter_data(first_name, last_name, zip_code)
 
-    payment_page = Payment_page(driver)
-    payment_page.confirm_payment()
+    # payment_page = Payment_page(driver)
+    # payment_page.confirm_payment()
 
-    finish_page = Finish_page(driver)
-    finish_page.finish()
+    # finish_page = Finish_page(driver)
+    # finish_page.finish()
+
+    print('\nКонец теста.\n')
+
+
+@pytest.mark.run(order=1)
+def test_select_product_2():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
+    options.add_experimental_option("detach", True)
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    g = Service(CHROMEDRIVE_PATH)
+    driver = webdriver.Chrome(options=options, service=g)
+
+    print('\n\nНачало теста.\n')
+
+    login = Login_page(driver)
+    login.authorization(users["standard_user"], password)
+
+    main_page = Main_page(driver)
+    main_page.select_product_2()
+
+    cart_page = Cart_page(driver)
+    cart_page.checkout()
+
+    print('\nКонец теста.\n')
+
+
+@pytest.mark.run(order=2)
+def test_select_product_3():
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
+    options.add_experimental_option("detach", True)
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    g = Service(CHROMEDRIVE_PATH)
+    driver = webdriver.Chrome(options=options, service=g)
+
+    print('\n\nНачало теста.\n')
+
+    login = Login_page(driver)
+    login.authorization(users["standard_user"], password)
+
+    main_page = Main_page(driver)
+    main_page.select_product_3()
+
+    cart_page = Cart_page(driver)
+    cart_page.checkout()
 
     print('\nКонец теста.\n')
