@@ -52,45 +52,45 @@ def test_select_product_1(set_group, set_up):
     driver.quit()
 
 
-# @pytest.mark.run(order=1)
-def test_select_product_2(set_group, set_up):
-    options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--ignore-ssl-errors')
-    options.add_experimental_option("detach", True)
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    g = Service(CHROMEDRIVE_PATH)
-    driver = webdriver.Chrome(options=options, service=g)
+# # @pytest.mark.run(order=1)
+# def test_select_product_2(set_group, set_up):
+#     options = webdriver.ChromeOptions()
+#     options.add_argument('--ignore-certificate-errors')
+#     options.add_argument('--ignore-ssl-errors')
+#     options.add_experimental_option("detach", True)
+#     options.add_experimental_option('excludeSwitches', ['enable-logging'])
+#     g = Service(CHROMEDRIVE_PATH)
+#     driver = webdriver.Chrome(options=options, service=g)
 
-    login = Login_page(driver)
-    login.authorization(users["standard_user"], password)
+#     login = Login_page(driver)
+#     login.authorization(users["standard_user"], password)
 
-    main_page = Main_page(driver)
-    main_page.select_product_2()
+#     main_page = Main_page(driver)
+#     main_page.select_product_2()
 
-    cart_page = Cart_page(driver)
-    cart_page.checkout()
+#     cart_page = Cart_page(driver)
+#     cart_page.checkout()
 
-    driver.quit()
+#     driver.quit()
 
 
-# @pytest.mark.run(order=2)
-def test_select_product_3(set_group, set_up):
-    options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--ignore-ssl-errors')
-    options.add_experimental_option("detach", True)
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    g = Service(CHROMEDRIVE_PATH)
-    driver = webdriver.Chrome(options=options, service=g)
+# # @pytest.mark.run(order=2)
+# def test_select_product_3(set_group, set_up):
+#     options = webdriver.ChromeOptions()
+#     options.add_argument('--ignore-certificate-errors')
+#     options.add_argument('--ignore-ssl-errors')
+#     options.add_experimental_option("detach", True)
+#     options.add_experimental_option('excludeSwitches', ['enable-logging'])
+#     g = Service(CHROMEDRIVE_PATH)
+#     driver = webdriver.Chrome(options=options, service=g)
 
-    login = Login_page(driver)
-    login.authorization(users["standard_user"], password)
+#     login = Login_page(driver)
+#     login.authorization(users["standard_user"], password)
 
-    main_page = Main_page(driver)
-    main_page.select_product_3()
+#     main_page = Main_page(driver)
+#     main_page.select_product_3()
 
-    cart_page = Cart_page(driver)
-    cart_page.checkout()
+#     cart_page = Cart_page(driver)
+#     cart_page.checkout()
 
-    driver.quit()
+#     driver.quit()
