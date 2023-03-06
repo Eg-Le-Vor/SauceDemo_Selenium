@@ -21,8 +21,8 @@ last_name = "Chaika"
 zip_code = "124365"
 
 
-@pytest.mark.run(order=3)
-def test_select_product_1():
+# @pytest.mark.run(order=3)
+def test_select_product_1(set_group, set_up):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
@@ -30,8 +30,6 @@ def test_select_product_1():
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     g = Service(CHROMEDRIVE_PATH)
     driver = webdriver.Chrome(options=options, service=g)
-
-    print('\n\nНачало теста.\n')
 
     login = Login_page(driver)
     login.authorization(users["standard_user"], password)
@@ -42,20 +40,20 @@ def test_select_product_1():
     cart_page = Cart_page(driver)
     cart_page.checkout()
 
-    # user_information_page = User_information_page(driver)
-    # user_information_page.enter_data(first_name, last_name, zip_code)
+    user_information_page = User_information_page(driver)
+    user_information_page.enter_data(first_name, last_name, zip_code)
 
-    # payment_page = Payment_page(driver)
-    # payment_page.confirm_payment()
+    payment_page = Payment_page(driver)
+    payment_page.confirm_payment()
 
-    # finish_page = Finish_page(driver)
-    # finish_page.finish()
+    finish_page = Finish_page(driver)
+    finish_page.finish()
 
-    print('\nКонец теста.\n')
+    driver.quit()
 
 
-@pytest.mark.run(order=1)
-def test_select_product_2():
+# @pytest.mark.run(order=1)
+def test_select_product_2(set_group, set_up):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
@@ -63,8 +61,6 @@ def test_select_product_2():
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     g = Service(CHROMEDRIVE_PATH)
     driver = webdriver.Chrome(options=options, service=g)
-
-    print('\n\nНачало теста.\n')
 
     login = Login_page(driver)
     login.authorization(users["standard_user"], password)
@@ -75,11 +71,11 @@ def test_select_product_2():
     cart_page = Cart_page(driver)
     cart_page.checkout()
 
-    print('\nКонец теста.\n')
+    driver.quit()
 
 
-@pytest.mark.run(order=2)
-def test_select_product_3():
+# @pytest.mark.run(order=2)
+def test_select_product_3(set_group, set_up):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
@@ -87,8 +83,6 @@ def test_select_product_3():
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     g = Service(CHROMEDRIVE_PATH)
     driver = webdriver.Chrome(options=options, service=g)
-
-    print('\n\nНачало теста.\n')
 
     login = Login_page(driver)
     login.authorization(users["standard_user"], password)
@@ -99,4 +93,4 @@ def test_select_product_3():
     cart_page = Cart_page(driver)
     cart_page.checkout()
 
-    print('\nКонец теста.\n')
+    driver.quit()
