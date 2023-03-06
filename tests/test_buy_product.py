@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from pages.login_page import Login_page
@@ -22,6 +23,7 @@ zip_code = "124365"
 
 
 # @pytest.mark.run(order=3)
+@allure.description("Покупка товара №1")
 def test_select_product_1(set_group, set_up):
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')

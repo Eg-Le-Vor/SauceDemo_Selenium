@@ -1,3 +1,4 @@
+import allure
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -54,13 +55,14 @@ class Login_page(Base):
         self.check_w = "Products"
         self.check_word_locator = "//span[@class='title']"
         
-        Logger.add_start_step(method='authorization')
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.get_current_url()
-        self.check_url(self.url)
-        self.input_user_name(user_name)
-        self.input_password(password)
-        self.click_login_button()
-        self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
-        Logger.add_end_step(url=self.driver.current_url, method='authorization')
+        with allure.step('authorization'):
+            Logger.add_start_step(method='authorization')
+            self.driver.get(self.url)
+            self.driver.maximize_window()
+            self.get_current_url()
+            self.check_url(self.url)
+            self.input_user_name(user_name)
+            self.input_password(password)
+            self.click_login_button()
+            self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
+            Logger.add_end_step(url=self.driver.current_url, method='authorization')
