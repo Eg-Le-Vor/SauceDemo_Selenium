@@ -2,6 +2,7 @@ from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.logger import Logger
 
 
 class User_information_page(Base):
@@ -60,6 +61,7 @@ class User_information_page(Base):
         self.check_u = "https://www.saucedemo.com/checkout-step-one.html"
         self.check_word_locator = "//span[@class='title']"
 
+        Logger.add_start_step(method='enter_data')
         self.get_current_url()
         self.check_url(self.check_u)
         self.input_first_name(first_name)
@@ -67,3 +69,4 @@ class User_information_page(Base):
         self.input_zip_code(zip_code)
         self.click_continue_button()
         self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
+        Logger.add_end_step(url=self.driver.current_url, method='enter_data')

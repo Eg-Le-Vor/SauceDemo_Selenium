@@ -2,6 +2,7 @@ from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.logger import Logger
 
 
 class Main_page(Base):
@@ -76,39 +77,47 @@ class Main_page(Base):
         self.check_u = "https://www.saucedemo.com/inventory.html"
         self.check_word_locator = "//span[@class='title']"
 
+        Logger.add_start_step(method='select_product_1')
         self.get_current_url()
         self.check_url(self.check_u)
         self.click_product_1_button()
         self.click_cart_button()
         self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
+        Logger.add_end_step(url=self.driver.current_url, method='select_product_1')
 
     def select_product_2(self):
         self.check_w = "Your Cart"
         self.check_u = "https://www.saucedemo.com/inventory.html"
         self.check_word_locator = "//span[@class='title']"
 
+        Logger.add_start_step(method='select_product_2')
         self.get_current_url()
         self.check_url(self.check_u)
         self.click_product_2_button()
         self.click_cart_button()
         self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
+        Logger.add_end_step(url=self.driver.current_url, method='select_product_2')
 
     def select_product_3(self):
         self.check_w = "Your Cart"
         self.check_u = "https://www.saucedemo.com/inventory.html"
         self.check_word_locator = "//span[@class='title']"
 
+        Logger.add_start_step(method='select_product_3')
         self.get_current_url()
         self.check_url(self.check_u)
         self.click_product_3_button()
         self.click_cart_button()
         self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
+        Logger.add_end_step(url=self.driver.current_url, method='select_product_3')
     
     def select_menu_about(self):
         self.check_u = "https://www.saucedemo.com/inventory.html"
 
+        Logger.add_start_step(method='select_menu_about')
         self.get_current_url()
         self.check_url(self.check_u)
         self.click_menu_button()
         self.click_about_button()
         self.get_screenshot()
+        Logger.add_end_step(url=self.driver.current_url, method='select_menu_about')
