@@ -21,6 +21,11 @@ class Login_page(Base):
     password_locator = "//input[@id='password']"
     login_button_locator = "//input[@id='login-button']"
 
+    users = {"standard_user": "standard_user",
+         "locked_out_user": "locked_out_user",
+         "problem_user": "problem_user",
+         "performance_glitch_user": "performance_glitch_user"}
+    password = "secret_sauce"
 
     """Геттеры"""
 
@@ -51,7 +56,7 @@ class Login_page(Base):
 
     """Методы"""
 
-    def authorization(self, user_name, password):
+    def authorization(self):
         self.check_w = "Products"
         self.check_word_locator = "//span[@class='title']"
         
@@ -61,8 +66,8 @@ class Login_page(Base):
             self.driver.maximize_window()
             self.get_current_url()
             self.check_url(self.url)
-            self.input_user_name(user_name)
-            self.input_password(password)
+            self.input_user_name(self.users["standard_user"])
+            self.input_password(self.password)
             self.click_login_button()
             self.check_word(self.get_check_word(self.check_word_locator), self.check_w)
             Logger.add_end_step(url=self.driver.current_url, method='authorization')

@@ -12,11 +12,6 @@ from pages.finish_page import Finish_page
 
 CHROMEDRIVE_PATH = "utils/chromedriver.exe"
 
-users = {"standard_user": "standard_user",
-         "locked_out_user": "locked_out_user",
-         "problem_user": "problem_user",
-         "performance_glitch_user": "performance_glitch_user"}
-password = "secret_sauce"
 first_name = "Egor"
 last_name = "Chaika"
 zip_code = "124365"
@@ -34,7 +29,7 @@ def test_select_product_1(set_group, set_up):
     driver = webdriver.Chrome(options=options, service=g)
 
     login = Login_page(driver)
-    login.authorization(users["standard_user"], password)
+    login.authorization()
 
     main_page = Main_page(driver)
     main_page.select_product_1()

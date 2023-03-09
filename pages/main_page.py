@@ -16,7 +16,7 @@ class Main_page(Base):
     """Локаторы"""
 
     cart_button_locator = "//div[@id='shopping_cart_container']"
-    product_1_button_locator = "//button[@id='add-to-cart-sauce-labs-backpack'"
+    product_1_button_locator = "//button[@id='add-to-cart-sauce-labs-backpack']"
     product_2_button_locator = "//button[@id='add-to-cart-sauce-labs-bike-light']"
     product_3_button_locator = "//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"
     menu_button_locator = "//button[@id='react-burger-menu-btn']"

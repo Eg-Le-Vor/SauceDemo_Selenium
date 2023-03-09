@@ -7,15 +7,6 @@ from pages.main_page import Main_page
 
 CHROMEDRIVE_PATH = "utils/chromedriver.exe"
 
-users = {"standard_user": "standard_user",
-         "locked_out_user": "locked_out_user",
-         "problem_user": "problem_user",
-         "performance_glitch_user": "performance_glitch_user"}
-password = "secret_sauce"
-first_name = "Egor"
-last_name = "Chaika"
-zip_code = "124365"
-
 
 @allure.description('Переход на страницу ABOUT')
 def test_link_about():
@@ -30,7 +21,7 @@ def test_link_about():
     print('\n\nНачало теста.\n')
 
     login = Login_page(driver)
-    login.authorization(users["standard_user"], password)
+    login.authorization()
 
     main_page = Main_page(driver)
     main_page.select_menu_about()
